@@ -1,4 +1,4 @@
-﻿namespace Gestão_de_equipamentos
+﻿namespace Gestão_de_equipamentos.ModuloEquipamento
 {
     public class RepositorioEquipamentos
     {

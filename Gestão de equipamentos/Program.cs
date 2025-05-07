@@ -1,14 +1,32 @@
-﻿namespace Gestão_de_equipamentos
+﻿using System.ComponentModel.Design;
+using Gestão_de_equipamentos.ModuloChamado;
+using Gestão_de_equipamentos.ModuloEquipamento;
+
+namespace Gestão_de_equipamentos
 {
     internal class Program
     {
         static void Main(string[] args)
         {
             TelaEquipamento telaEquipamento = new TelaEquipamento();
+            TelaChamado telaChamado = new TelaChamado();
 
             while (true)
             {
-                char opcaoEscolhida = telaEquipamento.ApresentarMenu();
+                char telaEscolhida = '2';
+
+                if (telaEscolhida == '1')
+                {
+                    char opcaoEscolhida = telaEquipamento.ApresentarMenu();
+
+                if (opcaoEscolhida == 'S')
+                        break;
+
+                }
+
+                 else if (telaEscolhida == '2')
+            {
+                char opcaoEscolhida = telaChamado.ApresentarMenu();
 
                 if (opcaoEscolhida == 'S')
                     break;
@@ -16,18 +34,29 @@
                 switch (opcaoEscolhida)
                 {
                     case '1':
-                        telaEquipamento.CadastrarRegistro();
+                        telaChamado.CadastrarRegistro();
                         break;
+
                     case '2':
-                        telaEquipamento.VisualizarRegistros(true);
+                        telaChamado.VisualizarRegistros(true);
                         break;
+
                     case '3':
-                        telaEquipamento.editarEquipamento();
+                        telaChamado.editarEquipamento();
                         break;
+
                     case '4':
-                        telaEquipamento.ExcluirRegistro();
+                        telaChamado.ExcluirRegistro();
                         break;
                 }
+                }
+                    
+
+                
+
+
+
+
 
             }
         }
