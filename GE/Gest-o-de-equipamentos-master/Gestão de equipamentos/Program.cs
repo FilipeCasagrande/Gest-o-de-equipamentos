@@ -1,4 +1,5 @@
 ﻿using Gestão_de_equipamentos.ModuloEquipamento;
+using Gestão_de_equipamentos.ModuloFabricante;
 
 namespace Gestão_de_equipamentos
 {
@@ -8,7 +9,8 @@ namespace Gestão_de_equipamentos
         {
             RepositorioEquipamentos repositorioEquipamento = new RepositorioEquipamentos();
             RepositorioChamado repositorioChamado = new RepositorioChamado();
-
+            RepositorioFabricante repositorioFabricante = new RepositorioFabricante();
+            
             TelaEquipamento telaEquipamento = new TelaEquipamento();
             telaEquipamento.repositorioEquipamento = repositorioEquipamento;
 
@@ -16,9 +18,14 @@ namespace Gestão_de_equipamentos
             telaChamado.repositorioChamado = repositorioChamado;
             telaChamado.repositorioEquipamento = repositorioEquipamento;
 
+            TelaFabricante telafabricante = new TelaFabricante();
+            telafabricante.repositorioFabricante = repositorioFabricante;
+            
+
             while (true)
             {
                 char telaEscolhida = ApresentarMenuPrincipal();
+
 
                 if (telaEscolhida == '1')
                 {
@@ -72,6 +79,33 @@ namespace Gestão_de_equipamentos
                             telaChamado.ExcluirRegistro();
                             break;
                     }
+
+                }
+                if (telaEscolhida == '3')
+                {
+                    char opcaoEscolhida = telafabricante.ApresentarMenu();
+
+                    if (opcaoEscolhida == 'S')
+                        break;
+
+                    switch (opcaoEscolhida)
+                    {
+                        case '1':
+                            telafabricante.CadastrarFabricante();
+                            break;
+
+                        case '2':
+                            telafabricante.VisualizarFabricantes(true);
+                            break;
+
+                        case '3':
+                            telafabricante.EditarFabricante();
+                            break;
+
+                        case '4':
+                            telafabricante.ExcluirFabricante();
+                            break;
+                    }
                 }
 
             }
@@ -89,12 +123,13 @@ namespace Gestão_de_equipamentos
 
             Console.WriteLine("1 - Controle de Equipamentos");
             Console.WriteLine("2 - Controle de Chamados");
+            Console.WriteLine("3 - Controle de Fabricante");
             Console.WriteLine("S - Sair");
 
             Console.WriteLine();
 
             Console.Write("Escolha uma das opções: ");
-            char opcaoEscolhida = Console.ReadLine()[0];
+            char opcaoEscolhida = Console.ReadLine().ToUpper()[0];
 
             return opcaoEscolhida;
         }

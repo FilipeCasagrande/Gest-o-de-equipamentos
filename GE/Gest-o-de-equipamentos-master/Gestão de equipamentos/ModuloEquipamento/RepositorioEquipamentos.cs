@@ -28,10 +28,7 @@
             equipamentoSelecionado.dataFabricacao = equipamentoAtualizado.dataFabricacao;
 
             return true;
-
         }
-
-        
 
         public bool ExcluirEquipamento(int idSelecionado)
         {

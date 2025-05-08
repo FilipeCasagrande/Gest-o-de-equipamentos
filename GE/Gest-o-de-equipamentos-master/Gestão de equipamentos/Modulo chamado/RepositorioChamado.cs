@@ -15,7 +15,6 @@ namespace Gestão_de_equipamentos
         public void CadastrarChamado(Chamado chamado)
         {
             chamados[contadorChamados] = chamado;
-
             contadorChamados++;
         }
 
