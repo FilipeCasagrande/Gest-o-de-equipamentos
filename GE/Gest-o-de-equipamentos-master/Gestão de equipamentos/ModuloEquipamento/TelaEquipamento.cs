@@ -2,7 +2,12 @@
 {
     public class TelaEquipamento
     {
-        public RepositorioEquipamentos repositorioEquipamento = new RepositorioEquipamentos();
+        public RepositorioEquipamentos repositorioEquipamento;
+
+        public TelaEquipamento(RepositorioEquipamentos equipamentosE)
+        {
+            repositorioEquipamento = equipamentosE;
+        }
         public void ExibirCabecalho()
         {
             Console.Clear();
@@ -44,7 +49,7 @@
 
         }
 
-        public Equipamento ObterDados()
+        private Equipamento ObterDados()
         {
             Console.WriteLine("Digite o nome do Equipamento");
             string nome = Console.ReadLine();
@@ -61,12 +66,8 @@
             Console.WriteLine("Digite a data de fabricação");
             DateTime dataFabricacao = DateTime.Parse(Console.ReadLine());
 
-            Equipamento equipamento = new Equipamento();
-            equipamento.nome = nome;
-            equipamento.preco = preco;
-            equipamento.serie = serie;
-            equipamento.fabricante = fabricante;
-            equipamento.dataFabricacao = dataFabricacao;
+            Equipamento equipamento = new Equipamento (nome, preco, serie, fabricante, dataFabricacao);
+            
             return equipamento;
         }
 

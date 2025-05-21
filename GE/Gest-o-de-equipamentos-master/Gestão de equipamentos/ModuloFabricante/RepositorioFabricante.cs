@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices.Marshalling;
-using System.Text;
-using System.Threading.Tasks;
-using Gestão_de_equipamentos.ModuloEquipamento;
-
-namespace Gestão_de_equipamentos.ModuloFabricante
+﻿namespace Gestão_de_equipamentos.ModuloFabricante
 {
-    public class RepositorioFabricante
+       public class RepositorioFabricante
     {
-        Fabricante[] fabricantes = new Fabricante[100];
-        public int contadorFabricante = 0;
+        private Fabricante[] fabricantes = new Fabricante[100];
+        private int contadorFabricante = 0;
 
 
         public void VerFabricante(Fabricante fabricante)

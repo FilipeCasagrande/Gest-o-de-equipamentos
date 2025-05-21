@@ -1,17 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Gestão_de_equipamentos.Modulo_chamado;
 using Gestão_de_equipamentos.ModuloEquipamento;
 
 namespace Gestão_de_equipamentos
 {
-    class TelaChamado
+     public class TelaChamado
     {
         public RepositorioEquipamentos repositorioEquipamento;
         public RepositorioChamado repositorioChamado;
+
+        public TelaChamado(RepositorioChamado chamado, RepositorioEquipamentos equipamentos)
+        {
+            repositorioChamado = chamado;
+            repositorioEquipamento = equipamentos;
+        }
 
         public void ExibirCabecalho()
         {
@@ -114,7 +116,7 @@ namespace Gestão_de_equipamentos
             Console.ReadLine();
         }
 
-        public void VisualizarRegistros(bool exibirCabecalho)
+        public void VisualizarRegistros(bool exibirCabecalho )
         {
             if (exibirCabecalho == true)
                 ExibirCabecalho();
@@ -139,14 +141,14 @@ namespace Gestão_de_equipamentos
 
                 Console.WriteLine(
                     "{0, -10} | {1, -20} | {2, -15} | {3, -15} | {4, -20}",
-                    c.id, c.titulo, c.descricao, c.dataAbertura.ToShortDateString(), c.equipamento.nome
+                    c.id, c.titulo, c.descricao, c.dataAbertura.ToShortDateString()
                 );
             }
 
             Console.ReadLine();
         }
 
-        public Chamado ObterDados()
+        private Chamado ObterDados()
         {
             Console.Write("Digite o título do chamado: ");
             string titulo = Console.ReadLine();
@@ -163,11 +165,10 @@ namespace Gestão_de_equipamentos
 
             Equipamento equipamentoSelecionado = repositorioEquipamento.SelecionarEquipamentoPorId(idEquipamento);
 
-            Chamado chamado = new Chamado();
+            Chamado chamado = new Chamado(titulo, descricao, dataAbertura);
             chamado.titulo = titulo;
             chamado.descricao = descricao;
             chamado.dataAbertura = dataAbertura;
-            chamado.equipamento = equipamentoSelecionado;
 
             return chamado;
         }

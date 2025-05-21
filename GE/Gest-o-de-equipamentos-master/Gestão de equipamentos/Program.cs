@@ -11,14 +11,14 @@ namespace Gestão_de_equipamentos
             RepositorioChamado repositorioChamado = new RepositorioChamado();
             RepositorioFabricante repositorioFabricante = new RepositorioFabricante();
             
-            TelaEquipamento telaEquipamento = new TelaEquipamento();
+            TelaEquipamento telaEquipamento = new TelaEquipamento(repositorioEquipamento);
             telaEquipamento.repositorioEquipamento = repositorioEquipamento;
 
-            TelaChamado telaChamado = new TelaChamado();
+            TelaChamado telaChamado = new TelaChamado(repositorioChamado, repositorioEquipamento);
             telaChamado.repositorioChamado = repositorioChamado;
             telaChamado.repositorioEquipamento = repositorioEquipamento;
 
-            TelaFabricante telafabricante = new TelaFabricante();
+            TelaFabricante telafabricante = new TelaFabricante(repositorioFabricante);
             telafabricante.repositorioFabricante = repositorioFabricante;
             
 

@@ -2,8 +2,8 @@
 {
     public class RepositorioEquipamentos
     {
-        public Equipamento[] equipamentos = new Equipamento[100];
-        public int contadorEquipamentos = 0;
+        private Equipamento[] equipamentos = new Equipamento[100];
+        private int contadorEquipamentos = 0;
         public void CadastrarEquipamento(Equipamento equipamento)
         {
             equipamentos[contadorEquipamentos] = equipamento;

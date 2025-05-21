@@ -5,7 +5,12 @@ namespace Gestão_de_equipamentos.ModuloFabricante
 {
     public class TelaFabricante
     {
-        public RepositorioFabricante repositorioFabricante = new RepositorioFabricante();
+        public RepositorioFabricante repositorioFabricante;
+
+        public TelaFabricante(RepositorioFabricante repositorioF)
+        {
+            repositorioFabricante = repositorioF;
+        }
         public void ExibirCabecalho()
         {
             Console.Clear();
@@ -45,7 +50,7 @@ namespace Gestão_de_equipamentos.ModuloFabricante
 
         }
 
-        public Fabricante ObterDados()
+        private Fabricante ObterDados()
         {
             Console.WriteLine("Digite o nome do Fabricante");
             string nome = Console.ReadLine();
@@ -56,10 +61,8 @@ namespace Gestão_de_equipamentos.ModuloFabricante
             Console.WriteLine("Digite o número do Fabricante");
             string telefone = Console.ReadLine();
 
-            Fabricante fabricante = new Fabricante();
-            fabricante.nome = nome;
-            fabricante.email = email;
-            fabricante.telefone = telefone;
+            Fabricante fabricante = new Fabricante(nome, email , telefone);
+            
             return fabricante;
         }
 

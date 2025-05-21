@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 using Gestão_de_equipamentos.Modulo_chamado;
 
 namespace Gestão_de_equipamentos
 {
-    class RepositorioChamado
+    public class RepositorioChamado
     {
-        public Chamado[] chamados = new Chamado[100];
-        public int contadorChamados = 0;
+        private Chamado[] chamados = new Chamado[100];
+        private int contadorChamados = 0;
 
         public void CadastrarChamado(Chamado chamado)
         {
@@ -28,7 +24,6 @@ namespace Gestão_de_equipamentos
             chamadoSelecionado.titulo = chamadoAtualizado.titulo;
             chamadoSelecionado.descricao = chamadoAtualizado.descricao;
             chamadoSelecionado.dataAbertura = chamadoAtualizado.dataAbertura;
-            chamadoSelecionado.equipamento = chamadoAtualizado.equipamento;
 
             return true;
         }

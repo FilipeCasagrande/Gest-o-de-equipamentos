@@ -1,19 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gestão_de_equipamentos.ModuloEquipamento;
+﻿using Gestão_de_equipamentos.ModuloEquipamento;
 
 namespace Gestão_de_equipamentos.Modulo_chamado
 {
-    class Chamado
+    public class Chamado
     {
         public int id;
         public string titulo;
         public string descricao;
         public DateTime dataAbertura;
 
-        public Equipamento equipamento;
+
+
+
+        public Chamado(string titulo, string descricao, DateTime dataAbertura)
+        {
+            this.titulo = titulo;
+            this.descricao = descricao;
+            this.dataAbertura = dataAbertura;
+        }
     }
 }
