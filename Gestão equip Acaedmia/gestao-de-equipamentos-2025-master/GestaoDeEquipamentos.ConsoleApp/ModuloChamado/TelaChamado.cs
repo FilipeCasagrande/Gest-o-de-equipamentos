@@ -1,53 +1,18 @@
 ﻿
 using GestaoDeEquipamentos.ConsoleApp.Compartilhado;
 using GestaoDeEquipamentos.ConsoleApp.ModuloEquipamento;
+using GestaoDeEquipamentos.ConsoleApp.ModuloFabricante;
 
 namespace GestaoDeEquipamentos.ConsoleApp.ModuloChamado;
 
-public class TelaChamado
+public class TelaChamado : TelaBase
 {
     public RepositorioEquipamento repositorioEquipamento;
     public RepositorioChamado repositorioChamado;
 
-    public void ExibirCabecalho()
+    public TelaChamado(RepositorioChamado repositorioC) : base("Chamado", repositorioC)
     {
-        Console.Clear();
-        Console.WriteLine("Gestão de Chamados");
-        Console.WriteLine();
-    }
-
-    public char ApresentarMenu()
-    {
-        ExibirCabecalho();
-
-        Console.WriteLine("1 - Cadastro de Chamado");
-        Console.WriteLine("2 - Visualizar Chamados");
-        Console.WriteLine("3 - Editar Chamado");
-        Console.WriteLine("4 - Excluir Chamado");
-        Console.WriteLine("S - Sair");
-
-        Console.WriteLine();
-
-        Console.Write("Digite uma opção válida: ");
-        char opcaoEscolhida = Console.ReadLine().ToUpper()[0];
-
-        return opcaoEscolhida;
-    }
-
-    public void CadastrarRegistro()
-    {
-        ExibirCabecalho();
-
-        Console.WriteLine("Cadastro de Chamados");
-
-        Console.WriteLine();
-
-        Chamado chamado = ObterDados();
-
-        repositorioChamado.CadastrarRegistro(chamado);
-
-        Console.WriteLine($"\nChamado \"{chamado.titulo}\" cadastrado com sucesso!");
-        Console.ReadLine();
+        repositorioChamado = repositorioC;
     }
 
     public void EditarRegistro()
@@ -142,7 +107,7 @@ public class TelaChamado
         Console.ReadLine();
     }
 
-    public Chamado ObterDados()
+    protected override Chamado ObterDados()
     {
         Console.Write("Digite o título do chamado: ");
         string titulo = Console.ReadLine();

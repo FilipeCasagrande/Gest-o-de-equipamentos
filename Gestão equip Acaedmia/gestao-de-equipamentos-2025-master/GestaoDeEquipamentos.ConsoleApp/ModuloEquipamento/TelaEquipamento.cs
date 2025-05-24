@@ -3,50 +3,15 @@ using GestaoDeEquipamentos.ConsoleApp.ModuloFabricante;
 
 namespace GestaoDeEquipamentos.ConsoleApp.ModuloEquipamento;
 
-public class TelaEquipamento
+public class TelaEquipamento : TelaBase
 {
     public RepositorioEquipamento repositorioEquipamento;
     public RepositorioFabricante repositorioFabricante;
 
-    public void ExibirCabecalho()
+
+    public TelaEquipamento(RepositorioEquipamento repositorioE) : base("Equipamento", repositorioE)
     {
-        Console.Clear();
-        Console.WriteLine("Gestão de Equipamentos");
-        Console.WriteLine();
-    }
-
-    public char ApresentarMenu()
-    {
-        ExibirCabecalho();
-
-        Console.WriteLine("1 - Cadastro de Equipamento");
-        Console.WriteLine("2 - Visualizar Equipamentos");
-        Console.WriteLine("3 - Editar Equipamentos");
-        Console.WriteLine("4 - Excluir Equipamentos");
-        Console.WriteLine("S - Sair");
-
-        Console.WriteLine();
-
-        Console.Write("Digite uma opção válida: ");
-        char opcaoEscolhida = Console.ReadLine().ToUpper()[0];
-
-        return opcaoEscolhida;
-    }
-
-    public void CadastrarRegistro()
-    {
-        ExibirCabecalho();
-
-        Console.WriteLine("Cadastro de Equipamentos");
-
-        Console.WriteLine();
-
-        Equipamento equipamento = ObterDados();
-
-        repositorioEquipamento.CadastrarRegistro(equipamento);
-
-        Console.WriteLine($"\nEquipamento \"{equipamento.nome}\" cadastrado com sucesso!");
-        Console.ReadLine();
+        repositorioEquipamento = repositorioE;
     }
 
     public void EditarRegistro()
@@ -172,7 +137,7 @@ public class TelaEquipamento
         Console.ReadLine();
     }
 
-    public Equipamento ObterDados()
+    protected override Equipamento ObterDados()
     {
         Console.Write("Digite o nome do equipamento: ");
         string nome = Console.ReadLine();
